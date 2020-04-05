@@ -62,6 +62,9 @@ export default function CardInfo({firstname,
   question3,
   question4,
   handleDelete,
+  startEditing,
+  stopEditing,
+  editIdx,
 }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -185,7 +188,7 @@ export default function CardInfo({firstname,
                   </div>
                   <div class="col s4">Giới tính: &nbsp;&nbsp;&nbsp;&nbsp;{sex}</div>
                   <div align="right" >
-                    <MenuButton handleDelete={handleDelete}></MenuButton>
+                    <MenuButton handleDelete={handleDelete} startEditing={startEditing} handleExpandClick={handleExpandClick}></MenuButton>
                   </div>
                 </div>
               </h6>

@@ -11,7 +11,7 @@ const options = [
 
 const ITEM_HEIGHT = 48;
 
-export default function MenuButton({handleDelete}) {
+export default function MenuButton({handleDelete,startEditing,handleExpandClick}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -22,6 +22,12 @@ export default function MenuButton({handleDelete}) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleDeleteItem = () => {
+    handleClose();
+    // handleExpandClick();
+    handleDelete();
+  }
 
   return (
     <div>
@@ -46,10 +52,10 @@ export default function MenuButton({handleDelete}) {
           },
         }}
       >
-          <MenuItem  onClick={handleClose}>
+          <MenuItem  onClick={startEditing}>
             Edit
           </MenuItem>
-          <MenuItem  onClick={handleDelete}>
+          <MenuItem  onClick={handleDeleteItem}>
             Delete
           </MenuItem>
       </Menu>

@@ -39,25 +39,25 @@ class App extends Component {
             a3: false,
           },
         },
-        // {
-        //   firstname: "Đỗ Thúy",
-        //   lastname: "Nga",
-        //   student_id: "20164631",
-        //   sex: "female",
-        //   term: "K61",
-        //   class: "CNTT Việt Nhật - AS - K61",
-        //   address: "Hà Nội",
-        //   phone_number: "034345656",
-        //   email: "dothuynga@gmail.com",
-        //   question1: true,
-        //   question2: true,
-        //   question3: true,
-        //   question4: {
-        //     a1: true,
-        //     a2: false,
-        //     a3: false,
-        //   },
-        // },
+        {
+          firstname: "Đỗ Thúy",
+          lastname: "Nga",
+          student_id: "20164631",
+          sex: "Nữ",
+          term: "K61",
+          class: "CNTT Việt Nhật - AS - K61",
+          address: "Hà Nội",
+          phone_number: "034345656",
+          email: "dothuynga@gmail.com",
+          question1: true,
+          question2: true,
+          question3: true,
+          question4: {
+            a1: true,
+            a2: false,
+            a3: false,
+          },
+        },
         // {
         //   firstname: "Nguyễn Hữu",
         //   lastname: "Mạnh",
@@ -97,11 +97,20 @@ class App extends Component {
         //   },
         // },
       ],
+      editIdx: -1,
       query: "",
       columnToQuery: "lastname"
     }   
   } 
 
+  startEditing(index) {
+    this.setState({editIdx: index });
+    console.log(index);
+  }
+
+  stopEditing() {
+    this.setState({ editIdx: -1 });
+  }
 
   handleTitleEdit(e) {
     this.state.item.title = e.target.value;
@@ -136,6 +145,7 @@ class App extends Component {
 
     
   render() {
+    
     const lowerCaseQuery = this.state.query.toLowerCase();
 
     let data = orderBy(this.state.query? this.state.data.filter(x => String(x[this.state.columnToQuery]).toLowerCase().includes(lowerCaseQuery)): this.state.data);
@@ -157,7 +167,10 @@ class App extends Component {
                 question2 = {item.question2}
                 question3 = {item.question3}
                 question4 = {item.question4}
-                handleDelete = {(index)=>this.handleDeleteItem(index)}
+                handleDelete = {()=>this.handleDeleteItem(index)}
+                startEditing = {()=>this.startEditing(index)}
+                stopEditing = {()=>this.stopEditing()}
+                editIdx = {this.state.editIdx}
             />
         )
     });
