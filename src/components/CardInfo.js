@@ -20,6 +20,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuButton from "./MenuButton.js"
+import EditForm from "./EditForm.js"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -65,6 +66,8 @@ export default function CardInfo({firstname,
   startEditing,
   stopEditing,
   editIdx,
+  handleSave,
+  card_index
 }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -114,70 +117,41 @@ export default function CardInfo({firstname,
     }
   };
 
-  // const{
-  //   name,
-  //   student_id,
-  //   institue,
-  //   term,
-  //   class_name,
-  //   address,
-  //   phone_number,
-  //   question1,
-  // } = this.props ;
-
-
-  return (
-    <div className="card-info">
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {lastname[0]}
-          </Avatar>
-        }
-        action={
-          // <IconButton aria-label="settings">
-          //   <MoreVertIcon />
-          // </IconButton>
-          <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-        }
-        title={firstname+" "+lastname}
-        subheader={student_id}
-      >title</CardHeader>
-      <CardMedia
-      />
-      {/* <CardContent>
-      <div class="row"><div class="col s5">{name}</div>
-        <div class="col s5">{class_name}</div>
-        <div class="col s2">{student_id}</div></div>
-        
-      </CardContent> */}
-      <CardActions disableSpacing>
-        
-        {/* <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton> */}
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-
-
+  let renderContent = (firstname,lastname,student_id,sex,class_name,address,phone_number,email,question1,question2,question3,question4,handleDelete,startEditing,stopEditing,editIdx,handleExpandClick,handleSave,card_index) => {
+    if(editIdx === card_index) {
+      return (
+        <EditForm
+          key={student_id}
+          firstname = {firstname}
+          lastname = {lastname}
+          student_id = {student_id}
+          sex = {sex}
+          class_name = {class_name}
+          address = {address}
+          phone_number = {phone_number}
+          email = {email}
+          question1a1 = {question1.a1}
+          question1a2 = {question1.a2}
+          question2a1 = {question2.a1}
+          question2a2 = {question2.a2}
+          question3a1 = {question3.a1}
+          question3a2 = {question3.a2}
+          question4a1 = {question4.a1}
+          question4a2 = {question4.a2}
+          question4a3 = {question4.a3}
+          question4 = {question4}
+          // question2 = {question2}
+          // question3 = {question3}
+          // question4 = {question4}
+          stopEditing = {stopEditing}
+          handleSave = {handleSave}
+          card_index = {card_index}
+        />
+      );
+    }
+    else {
+      return (
+        <div>
               <h6>
                 <div class="row">
                   <div class="col s1">
@@ -302,6 +276,63 @@ export default function CardInfo({firstname,
                       </p>
                     </div>
                   </div>
+                  </div>
+      );
+    }
+  }
+
+  return (
+    <div >
+    <Card className={classes.root}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            {lastname[0]}
+          </Avatar>
+        }
+        action={
+          // <IconButton aria-label="settings">
+          //   <MoreVertIcon />
+          // </IconButton>
+          <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+        }
+        title={firstname+" "+lastname}
+        subheader={student_id}
+      >title</CardHeader>
+      <CardMedia
+      />
+      {/* <CardContent>
+      <div class="row"><div class="col s5">{name}</div>
+        <div class="col s5">{class_name}</div>
+        <div class="col s2">{student_id}</div></div>
+        
+      </CardContent> */}
+      <CardActions disableSpacing>
+        
+        {/* <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton> */}
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          {renderContent(firstname,lastname,student_id,sex,class_name,address,phone_number,email,question1,question2,question3,question4,handleDelete,startEditing,stopEditing,editIdx,handleExpandClick,handleSave,card_index)}
+
         </CardContent>
       </Collapse>
     </Card>

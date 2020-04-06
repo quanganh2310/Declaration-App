@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DeclarationForm from "./DeclarationForm.js"
+import EditForm from "./EditForm.js"
 import orderBy from "lodash/orderBy";
 import CardInfo from "./CardInfo.js"
 import SearchBar from "./SearchBar.js"
@@ -15,7 +16,7 @@ class App extends Component {
           firstname: "Trần Văn",
           lastname: "Hoàng",
           student_id: "20166152",
-          sex: "Nam",
+          sex: "Nữ",
           term: "K61",
           class: "CNTT Việt Nhật - IS - K61",
           address: "Nghệ An",
@@ -49,9 +50,18 @@ class App extends Component {
           address: "Hà Nội",
           phone_number: "034345656",
           email: "dothuynga@gmail.com",
-          question1: true,
-          question2: true,
-          question3: true,
+          question1: {
+            a1: false,
+            a2: true,
+          },
+          question2: {
+            a1: true,
+            a2: false,
+          },
+          question3: {
+            a1: true,
+            a2: false,
+          },
           question4: {
             a1: true,
             a2: false,
@@ -108,8 +118,9 @@ class App extends Component {
     console.log(index);
   }
 
-  stopEditing() {
+  stopEditing(e) {
     this.setState({ editIdx: -1 });
+    e.preventDefault();
   }
 
   handleTitleEdit(e) {
@@ -128,6 +139,14 @@ class App extends Component {
       localStorage.setItem("data", JSON.stringify(this.state.data))
     });
     
+  }
+
+  handleSave(temp,index) {
+    var data = this.state.data;
+    data[index] = temp;
+    this.setState({
+      data : data
+    });
   }
   
   handleDeleteItem(index) {
@@ -169,8 +188,10 @@ class App extends Component {
                 question4 = {item.question4}
                 handleDelete = {()=>this.handleDeleteItem(index)}
                 startEditing = {()=>this.startEditing(index)}
-                stopEditing = {()=>this.stopEditing()}
+                stopEditing = {(e)=>this.stopEditing(e)}
                 editIdx = {this.state.editIdx}
+                handleSave = {(temp,i)=>this.handleSave(temp,i)}
+                card_index = {index}
             />
         )
     });
@@ -180,7 +201,7 @@ class App extends Component {
     return (
       
       <div>
-        <div class="container">
+        <div className="container">
 
         <div className="row mt-20">
             <div className="card">
@@ -215,6 +236,7 @@ class App extends Component {
                     handleSearchColumn={(value)=>this.handleSearchColumn(value)}
                   ></SearchBar>
                   {list}
+                  {/* <EditForm></EditForm> */}
                 </div>
                 <div class="col s1"></div>
               </div>

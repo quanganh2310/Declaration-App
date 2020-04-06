@@ -26,7 +26,7 @@ class SearchBar extends Component {
         value={this.props.query}
         onChange={(e) => this.props.handleSearchQuery(e.target.value)}
       />
-      <label for="query">Tìm kiếm</label>
+      <label>Tìm kiếm</label>
     </div>
     <div class="input-field col s2">
       <i class="material-icons prefix">filter_list</i>

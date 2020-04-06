@@ -11,7 +11,7 @@ class DeclarationForm extends Component {
         firstname: "",
         lastname: "",
         student_id: "",
-        sex: "",
+        sex: "Nam",
         email: "",
         term: "",
         class: "",
@@ -140,7 +140,7 @@ class DeclarationForm extends Component {
         firstname: "",
         lastname: "",
         student_id: "",
-        sex: "",
+        sex: "Nam",
         email: "",
         term: "",
         class: "",
@@ -217,13 +217,13 @@ class DeclarationForm extends Component {
                   <div class="row"></div>
                   <div class="row">
                     <div class="col s2"><h6>Họ và tên đệm:</h6></div>
-                    <div class="col s3"><input value={this.state.item.firstname} id="fullname" placeholder="VD: Nguyễn Quang" onChange={(e)=>this.handleEditFirstName(e)} variant="outlined" hintText="VD: Nguyen Van A" type="text" class="validate"/></div>
+                    <div class="col s3"><input value={this.state.item.firstname} name="fullname" placeholder="VD: Nguyễn Quang" onChange={(e)=>this.handleEditFirstName(e)} variant="outlined" hintText="VD: Nguyen Van A" type="text" class="validate"/></div>
                     <div class="col s1"><h6>Tên:</h6></div>
-                    <div class="col s2"><input  value={this.state.item.lastname} id="lastname" placeholder="Anh" onChange={(e)=>this.handleEditLastName(e)} type="text" class="validate"/></div>
+                    <div class="col s2"><input  value={this.state.item.lastname} name="lastname" placeholder="Anh" onChange={(e)=>this.handleEditLastName(e)} type="text" class="validate"/></div>
                     <div class="col s1"></div>
                     <div class="col s1"><h6>Giới tính:</h6></div>
                     <div class="col s2">    
-                      <select id="sex" value={this.state.item.sex} onChange={(e)=>this.handleEditSex(e)}>
+                      <select name="sex" value={this.state.item.sex} onChange={(e)=>this.handleEditSex(e)}>
                         <option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
                       </select>
@@ -232,27 +232,27 @@ class DeclarationForm extends Component {
                   <div class="row">
                     <div class="col s2"><h6>MSSV:</h6></div>
                     <div class="col s2">    
-                      <input  value={this.state.item.student_id} id="student_id" placeholder="VD: 20160001" onChange={(e)=>this.handleEditId(e)} type="text" class="validate"/>
+                      <input  value={this.state.item.student_id} name="student_id" placeholder="VD: 20160001" onChange={(e)=>this.handleEditId(e)} type="text" class="validate"/>
                     </div>
                     <div class="col s2"></div>
 
                     <div class="col s1"><h6>Lớp:</h6></div>
-                    <div class="col s4"><input value={this.state.item.class} id="class" placeholder="VD: Công nghệ thông tin - 01 - K61" onChange={(e)=>this.handleEditClass(e)} type="text" class="validate"/></div>
+                    <div class="col s4"><input value={this.state.item.class} name="class" placeholder="VD: Công nghệ thông tin - 01 - K61" onChange={(e)=>this.handleEditClass(e)} type="text" class="validate"/></div>
                     
 
                   </div>
                   <div class="row">
                     <div class="col s2"><h6>Nơi ở hiện tại:</h6></div>
-                    <div class="col s7"><input value={this.state.item.address} id="address" onChange={(e)=>this.handleEditAddress(e)} placeholder="Số nhà/Thôn, Xã/Phường, Quận/Huyện, Tinht/Thành phố" type="text" class="validate"/></div>
+                    <div class="col s7"><input value={this.state.item.address} name="address" onChange={(e)=>this.handleEditAddress(e)} placeholder="Số nhà/Thôn, Xã/Phường, Quận/Huyện, Tinht/Thành phố" type="text" class="validate"/></div>
                   </div>
                   <div class="row">
                     <div class="col s2"><h6>Điện thoại:</h6></div>
                     <div class="col s3">          
-                      <input value={this.state.item.phone_number} id="telephone" onChange={(e)=>this.handleEditPhone(e)} type="tel" class="validate"/>
+                      <input value={this.state.item.phone_number} name="telephone" onChange={(e)=>this.handleEditPhone(e)} type="tel" class="validate"/>
                     </div>
                     <div class="col s1"></div>
                     <div class="col s1"><h6>Email</h6></div>
-                    <div class="col s4"><input value={this.state.item.email} id="email" placeholder="example@gmail.com" onChange={(e)=>this.handleEditMail(e)} type="email" class="validate"/></div>
+                    <div class="col s4"><input value={this.state.item.email} name="email" placeholder="example@gmail.com" onChange={(e)=>this.handleEditMail(e)} type="email" class="validate"/></div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12"><h6>Bạn có lưu trú, đi từ/qua vùng có Dịch (Trung Quốc, Anh, Hà Nội, TP Hồ Chí Minh,...):</h6>

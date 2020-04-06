@@ -3,6 +3,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Modal } from 'react-materialize';
+
 
 const options = [
   'Edit',
@@ -53,12 +55,12 @@ export default function MenuButton({handleDelete,startEditing,handleExpandClick}
         }}
       >
           <MenuItem  onClick={startEditing}>
-            Edit
+            Chỉnh sửa
           </MenuItem>
           <MenuItem  onClick={handleDeleteItem}>
-            Delete
+            Xóa
           </MenuItem>
       </Menu>
-    </div>
+      </div>
   );
 }
