@@ -6,6 +6,7 @@ import CardInfo from "./CardInfo.js"
 import SearchBar from "./SearchBar.js"
 import './App.css';
 
+
 class App extends Component {
     
   constructor() {
@@ -15,6 +16,7 @@ class App extends Component {
         {
           firstname: "Trần Văn",
           lastname: "Hoàng",
+          fullname: "Trần Văn Hoàng",
           student_id: "20166152",
           sex: "Nữ",
           term: "K61",
@@ -43,6 +45,7 @@ class App extends Component {
         {
           firstname: "Đỗ Thúy",
           lastname: "Nga",
+          fullname: "Đỗ Thúy Nga",
           student_id: "20164631",
           sex: "Nữ",
           term: "K61",
@@ -109,7 +112,7 @@ class App extends Component {
       ],
       editIdx: -1,
       query: "",
-      columnToQuery: "lastname"
+      columnToQuery: "fullname"
     }   
   } 
 

@@ -10,6 +10,7 @@ class EditForm extends Component {
         this.state = {
             firstname: "",
             lastname: "Anh",
+            fullname:"",
             student_id: "",
             sex: "Nam",
             email: "",
@@ -40,6 +41,7 @@ class EditForm extends Component {
       this.setState({
         firstname: this.props.firstname,
             lastname: this.props.lastname,
+            fullname: this.props.firstname+" "+this.props.lastname,
             student_id: this.props.student_id,
             sex: this.props.sex,
             email: this.props.email,
@@ -69,6 +71,18 @@ class EditForm extends Component {
     handleCancel(e) {
       e.preventDefault();
       this.props.stopEditing(e);
+    }
+
+    handleEditFirstName(e) {
+      this.state.firstname = e.target.value;
+      this.state.fullname = this.state.firstname + " " + this.state.lastname;
+      this.setState({item: this.state});
+    }
+  
+    handleEditLastName(e) {
+      this.state.lastname = e.target.value;
+      this.state.fullname = this.state.firstname + " " + this.state.lastname;
+      this.setState({item: this.state});
     }
 
     handleChange(e) {
@@ -137,6 +151,7 @@ class EditForm extends Component {
       this.setState({
         firstname: "",
         lastname: "",
+        fullname: "",
         student_id: "",
         sex: "Nam",
         email: "",
@@ -212,11 +227,11 @@ class EditForm extends Component {
                    <div class="row"></div> <i  class="material-icons prefix">account_circle</i>
                   </div>
                   <div class="col s3"> 
-                    <input value={this.state.firstname} id="firstname" placeholder="VD: Nguyễn Quang" onChange={(e)=>this.handleChange(e)}  type="text" class="validate"/>
+                    <input value={this.state.firstname} id="firstname" placeholder="VD: Nguyễn Quang" onChange={(e)=>this.handleEditFirstName(e)}  type="text" class="validate"/>
                     <label for="firstname">Họ và tên đệm</label>
                   </div>
                   <div class="col s2">
-                    <input value={this.state.lastname} id="lastname" placeholder="VD: Anh" onChange={(e)=>this.handleChange(e)} type="text" class="validate"/>
+                    <input value={this.state.lastname} id="lastname" placeholder="VD: Anh" onChange={(e)=>this.handleEditLastName(e)} type="text" class="validate"/>
                     <label htmlFor="lastname">Tên</label>
                   </div>
                   <div class="col s1"></div>

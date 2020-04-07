@@ -35,7 +35,7 @@ class SearchBar extends Component {
         value={this.props.columnToQuery}
         onChange={(e) => this.props.handleSearchColumn(e.target.value)}
       >
-        <option value="lastname">Tên</option>
+        <option value="fullname">Tên</option>
         <option value="student_id">MSSV</option>
       </select>
       <label>Theo</label>

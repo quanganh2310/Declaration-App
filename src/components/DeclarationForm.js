@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import './DeclarationForm.css';
 
 class DeclarationForm extends Component {
@@ -10,6 +11,7 @@ class DeclarationForm extends Component {
       item: {
         firstname: "",
         lastname: "",
+        fullname: "",
         student_id: "",
         sex: "Nam",
         email: "",
@@ -39,11 +41,13 @@ class DeclarationForm extends Component {
   } 
   handleEditFirstName(e) {
     this.state.item.firstname = e.target.value;
+    this.state.item.fullname = this.state.item.firstname + " " + this.state.item.lastname;
     this.setState({item: this.state.item});
   }
 
   handleEditLastName(e) {
     this.state.item.lastname = e.target.value;
+    this.state.item.fullname = this.state.item.firstname + " " + this.state.item.lastname;
     this.setState({item: this.state.item});
   }
   
@@ -139,6 +143,7 @@ class DeclarationForm extends Component {
       item: {
         firstname: "",
         lastname: "",
+        fullname: "",
         student_id: "",
         sex: "Nam",
         email: "",
@@ -204,8 +209,9 @@ class DeclarationForm extends Component {
         );
       }
     }; 
+
     return (
-      <div>
+      <div class="decla-form">
 
         <div class="row">
           <div class="col s12 ">
@@ -312,7 +318,9 @@ class DeclarationForm extends Component {
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary" >Gửi tờ khai</button>
+
                 </form>
+                
               </div>
             </div>
           </div>
