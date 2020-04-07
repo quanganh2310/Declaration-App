@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import { Alert, AlertTitle } from '@material-ui/lab';
 import './DeclarationForm.css';
 
 class DeclarationForm extends Component {
